@@ -13,6 +13,7 @@ export default function Details() {
     url,
     source,
     publishedAt,
+    description,
   } = article;
   return (
     <Card className="article-detail">
