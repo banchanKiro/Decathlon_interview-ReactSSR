@@ -7,7 +7,7 @@ const server = http.createServer(app);
 let currentApp = app;
 
 server
-  .listen(process.env.PORT || 3000, () => {
+  .listen(process.env.PORT || 3000, "0.0.0.0", () => {
     console.log("🚀 started");
   })
   .on("error", (error) => {
