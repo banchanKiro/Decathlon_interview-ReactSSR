@@ -6,11 +6,9 @@ const server = http.createServer(app);
 
 let currentApp = app;
 
-const PORT = process.env.REACT_APP_PORT || 3000;
-
 server
-  .listen(PORT, () => {
-    console.log(`🚀 started on port ${port}`);
+  .listen(process.env.PORT || 3000, () => {
+    console.log("🚀 started");
   })
   .on("error", (error) => {
     console.log(error);
