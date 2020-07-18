@@ -1,37 +1,20 @@
-.Home {
-  text-align: center;
+.site-layout-content {
+  background: #fff;
+  padding: 24px;
+  min-height: 280px;
 }
 
-.Home-logo {
-  animation: Home-logo-spin infinite 20s linear;
-  height: 80px;
+.logo {
+  width: 120px;
+  height: 60px;
+  margin: 3px 24px 3px 0;
+  float: left;
 }
 
-.Home-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.site-layout-background {
+  background: #fff;
 }
 
-.Home-intro {
-  font-size: large;
-}
-
-.Home-resources {
-  list-style: none;
-}
-
-.Home-resources > li {
-  display: inline-block;
-  padding: 1rem;
-}
-
-@keyframes Home-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ant-layout-sider-children p {
+  margin: 0;
 }

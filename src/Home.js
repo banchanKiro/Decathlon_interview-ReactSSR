@@ -1,33 +1,71 @@
-import React from 'react';
-import logo from './react.svg';
-import './Home.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./Home.css";
+import { Link } from "react-router-dom";
 
-class Home extends React.Component {
+import axios from "axios";
+
+import { Card, Divider } from "antd";
+import InfiniteScroll from "react-infinite-scroll-component";
+import actions from "./store/actions";
+class Home extends Component {
+  fetchNews = () => {
+    const {
+      news: { page, sources },
+      updateNews,
+    } = this.props;
+
+    axios
+      .get(`/api/news?page=${parseInt(page) + 1}&sources=${sources}`)
+      .then(({ data: news }) => updateNews(news));
+  };
+
   render() {
+    const { news, setCurrentArticle } = this.props;
     return (
-      <div className="Home">
-        <div className="Home-header">
-          <img src={logo} className="Home-logo" alt="logo" />
-          <h2>Welcome to Razzle</h2>
-        </div>
-        <p className="Home-intro">
-          To get started, edit <code>src/App.js</code> or{' '}
-          <code>src/Home.js</code> and save to reload.
-        </p>
-        <ul className="Home-resources">
-          <li>
-            <a href="https://github.com/jaredpalmer/razzle">Docs</a>
-          </li>
-          <li>
-            <a href="https://github.com/jaredpalmer/razzle/issues">Issues</a>
-          </li>
-          <li>
-            <a href="https://palmer.chat">Community Slack</a>
-          </li>
-        </ul>
-      </div>
+      <InfiniteScroll
+        dataLength={news.articles.length}
+        next={this.fetchNews}
+        hasMore={news.articles.length !== news.totalResults}
+        loader={<h4>loading...</h4>}
+      >
+        {news.articles.map((article, i) => {
+          const { description, title, urlToImage } = article;
+          return (
+            <Link to="/details" key={i}>
+              <Card
+                bordered={false}
+                className="article"
+                onClick={() => {
+                  setCurrentArticle(article);
+                }}
+              >
+                <article>
+                  <div className="image-fill">
+                    <img src={urlToImage} />
+                  </div>
+                  <h2 className="title">{title}</h2>
+                  <p>{description}</p>
+                </article>
+              </Card>
+              <Divider
+                style={{
+                  margin: "10px 0",
+                }}
+              />
+            </Link>
+          );
+        })}
+      </InfiniteScroll>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  news: state.news,
+});
+
+export default connect(mapStateToProps, {
+  updateNews: actions.updateNews,
+  setCurrentArticle: actions.setCurrentArticle,
+})(Home);

@@ -1,0 +1,5 @@
+export const UPDATE_NEWS = "UPDATE_NEWS";
+export const UPDATE_HEADLINES = "UPDATE_HEADLINES";
+export const SET_CURRENT_ARTICLE = "SET_CURRENT_ARTICLE";
+export const SET_NEWS = "SET_NEWS";
+export const SET_HEADLINES = "SET_HEADLINES";
