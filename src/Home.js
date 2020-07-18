@@ -42,7 +42,7 @@ class Home extends Component {
               >
                 <article>
                   <div className="image-fill">
-                    <img src={urlToImage} />
+                    <img src={urlToImage} alt={title} />
                   </div>
                   <h2 className="title">{title}</h2>
                   <p>{description}</p>
