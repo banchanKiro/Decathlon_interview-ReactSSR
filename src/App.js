@@ -20,7 +20,7 @@ const App = ({ history, setNews }) => {
 
   function handleChange(sources) {
     axios
-      .get(`/api/news?page=1&q=${news.q}&sources=${sources.toString()}`)
+      .get(`/api/news?page=1&sources=${sources.toString()}`)
       .then(({ data: news }) => setNews(news));
   }
 

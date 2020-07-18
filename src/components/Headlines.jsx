@@ -22,7 +22,7 @@ class Headlines extends Component {
     } = this.props;
 
     axios
-      .get(`/api/headlines?page=${parseInt(page) + 1}&sources=${sources}`)
+      .get(`/api/headlines?page=${parseInt(page) + 1}`)
       .then(({ data: headlines }) => updateHeadlines(headlines));
   };
 
