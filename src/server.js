@@ -11,8 +11,8 @@ import App from "./App";
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 const API_KEY =
-  process.env.REACT_APP_API_KEY || "12300b7348a6461ab665fb6220127ce1";
-const SERVER_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:3000";
+  process.env.RAZZLE_API_KEY || "12300b7348a6461ab665fb6220127ce1";
+const SERVER_URL = process.env.RAZZLE_SERVER_URL || "http://localhost:3000";
 
 const server = express();
 
